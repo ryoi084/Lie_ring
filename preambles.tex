@@ -1,0 +1,140 @@
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{pifont}
+\usepackage[top=2cm, bottom=2cm, left=1cm, right=1cm]{geometry}
+\usepackage{physics}
+\usepackage{mathtools}
+\usepackage{thmtools}
+\usepackage{mdframed}
+\usepackage[usename,dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage[nameinlink,capitalize]{cleveref}
+\usepackage{titlesec}
+\usepackage[deluxe]{otf}
+\usepackage{tikz}
+\usetikzlibrary{intersections, calc, arrows.meta}
+\titleformat*{\section}{\centering\LARGE\bfseries\rmfamily}
+\titleformat*{\subsection}{\large\bfseries\rmfamily}
+\titlespacing*{\subsection}{0pt}{1cm}{0pt}
+\titleformat*{\subsubsection}{\bfseries\rmfamily}
+\allowdisplaybreaks[4]
+\definecolor{dark-blue}{cmyk}{1,0.2,0,0.6}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=dark-blue,
+}
+
+\numberwithin{equation}{section}
+\declaretheoremstyle[
+headfont=\normalfont\bfseries,
+notefont=\bfseries, notebraces={『}{』},
+bodyfont=\normalfont,
+postheadspace=\newline,
+headpunct={},
+within=section,
+preheadhook={\begin{mdframed}[backgroundcolor=orange!15,
+  innertopmargin =0pt , splittopskip = \topskip,
+  skipbelow= 6pt, skipabove=6pt, %
+  topline=false,bottomline=false,leftline=false,rightline=false]},
+postfoothook=\end{mdframed}
+]{defstyle}
+
+
+\declaretheorem[
+  name=Definition,
+  style=defstyle,
+  ]{definition}
+\declaretheorem[
+  name=Theorem,
+  within=section,
+  thmbox={
+    style=M,
+    % titlestyle={『{}』},
+    bodystyle=\normalfont\noindent}
+  ]{theorem}
+\declaretheorem[
+  name=Lemma,
+  within=section,
+  thmbox={style=M,bodystyle=\normalfont}
+  ]{lemma}
+\declaretheorem[
+  name=Probrem,
+  within=section,
+  thmbox={style=S,bodystyle=\normalfont}
+  ]{problem}
+\declaretheorem[
+  name={\rm \textbf{Solution}},
+  style=remark,
+  within=section,
+  ]{solution}
+\declaretheorem[
+  name=Remark,
+  style=remark,
+  numbered=no,
+  ]{remark}
+\declaretheorem[
+  name=\textbf{Named},
+  style=remark,
+  shaded={bgcolor=gray!15},
+  numbered=no,
+  ]{named}
+\declaretheoremstyle[
+  spaceabove=6pt, spacebelow=6pt,
+  headfont=\normalfont\bfseries,
+  notefont=\mdseries,
+  bodyfont=\normalfont,
+  postheadspace=1em,
+  ]{exstyle}
+\declaretheorem[sharenumber=theorem,style=exstyle]{example}
+\declaretheoremstyle[
+    spaceabove=-6pt, 
+    spacebelow=6pt, 
+    headfont=\normalfont\bfseries, 
+    bodyfont = \normalfont,
+    postheadspace=1em, 
+    qed=$\blacksquare$, 
+    headpunct={:}]{myproofstyle} %<---- change this name
+\declaretheorem[name={Proof}, style=myproofstyle, unnumbered]{Proof}
+
+\DeclareMathOperator{\Der}{Der}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\Alt}{Alt}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\ad}{ad}
+% \DeclareMathOperator{\o}{o}
+\newcommand{\dprime}{{\prime\prime}}
+\renewcommand{\o}{o}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\g}{\mathfrak{g}}
+\newcommand{\h}{\mathfrak{h}}
+\renewcommand{\a}{\mathfrak{a}}
+\renewcommand{\b}{\mathfrak{b}}
+% \newcommand{\gl}{g\ell}
+\newcommand{\ie}{\textit{i}.\textit{e}.\gt }
+\newcommand{\gl}{gl}
+\renewcommand{\sl}{sl}
+\newcommand{\cmark}{\ding{51}}
+\newcommand{\xmark}{\ding{55}}
+\newcommand{\htar}[2]{\hypertarget{#1}{#2}}
+\newcommand{\hlin}[2]{\hyperlink{#1}{#2}}
+\renewcommand{\href}[2]{\hyperref[#1]{#2}}
+\renewcommand{\emph}[1]{\textbf{#1}}
+\renewcommand\labelitemi{$\circ$}
+\crefname{theorem}{Thm.}{Thms.}
+\crefname{definition}{Def.}{Defs.}
+\crefname{lemma}{Lem.}{Lems.}
+
+\renewenvironment{abstract}
+ {\footnotesize
+  \begin{center}
+  \bfseries \vspace{-.5cm}\vspace{0pt}
+  \end{center}
+  \list{}{
+    \setlength{\leftmargin}{3.5cm}%
+    \setlength{\rightmargin}{\leftmargin}%
+    \setlength{\partopsep}{.5cm}%
+  }%
+  \item\relax}
+ {\endlist}
+
+\input{link_list.tex}
