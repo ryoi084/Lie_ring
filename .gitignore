@@ -1,1 +1,10 @@
 /udline.sty
+*.aux
+*.log
+*.fdb_latexmk
+*.nav
+*.out
+*.snm
+*.synctex.gz
+*.toc
+*.fls
