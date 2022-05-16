@@ -1,0 +1,36 @@
+\documentclass[../main]{subfiles}
+
+\setcounter{section}{2}
+
+\begin{document}
+
+\twocolumn[
+  \section{可解環、冪零環、エンゲルの定理}\label{sec:3}
+  \begin{abstract}
+    今回はリー環の中で特に可解環、冪零環と呼ばれるものについて説明する。これは群論における可解群、冪零群に対応する概念であり、リー群とリー環の対応を考えると、実際、可解リー群、冪零リー群はそれぞれ可解リー環、冪零リー環に対応している。
+  \end{abstract}
+]
+\subsection{可解リー環の定義}
+\begin{definition}[列]\label{Def:sequence}
+  $\g$を{\実数体}$\R$上の{\Lie環}とする。
+  \begin{align*}
+    \href{Def:der_ideal}{D\g}=\comm{\g}{\g}=\qty{\sum_{i=1}^{m}\comm{x_{i}}{y_{i}}\eval x_{i},y_{i}\in\g, m\ge1}
+  \end{align*}
+  とおけば、これは$\g$の一つの{\イデアル}になり、{\商環}$\g/D\g$は{\可換なLie環}になる。そこで帰納的に
+  \begin{align*}
+    D^{k}\g=D\qty(D^{k-1}\g)\qq{}(k=1,2,\cdots)
+    \tag{1}\label{eq:3_(1)}
+  \end{align*}
+  (ただし$D^{0}\g=\g$とおく)と定義すれば
+  \begin{align*}
+    \g(=D^{0}\g)\supset D\g \supset D^{2}\g \supset \cdots
+  \end{align*}
+  という{\部分Lie環}の\emph{列}(sequence)が得られる。
+\end{definition}
+
+\begin{remark}
+  $D^{k}\g$の$D^{k-1}\g$に対する関係は$D\g$の$\g$に対する関係と全く同じだから、$D^{k}\g$は$D^{k-1}\g$の{\イデアル}で、商$D^{k-1}\g/D^{k}\g$は{\可換なLie環}である。
+\end{remark}
+
+
+\end{document}

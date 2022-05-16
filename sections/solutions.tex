@@ -1,0 +1,42 @@
+\documentclass[../main]{subfiles}
+
+\setcounter{section}{0}
+
+\begin{document}
+\twocolumn[
+  \section*{問題回答}
+]
+
+\setcounter{section}{1}
+\setcounter{section}{2}
+\begin{solution}\label{sol:1}
+  \href{prob:1}{(問題文)}\\
+  $\g=\gl_n(\R)=M_n(\R)$とする。左辺$D\g$について
+  \begin{align*}
+    D\g=\comm{\g}{\g} \qq{from \cref{Def:der_ideal}}
+  \end{align*}
+  $x,y\in\g$において、$\sl_n(\R)$であることを示すには\eqref{eq:sl}より$\tr{\comm{x}{y}}=0$であることを示せばよい。\eqref{eq:sl}に倣って
+  $x=(\xi_{ij}),y=(\eta_{ij})$とおくと
+  \begin{align*}
+    (xy)_{ij}=\sum_{k=1}^{n}\xi_{ik}\eta_{kj}\qc
+    (yx)_{ij}=\sum_{k=1}^{n}\eta_{ik}\xi_{kj}
+  \end{align*}
+  より
+  \begin{align*}
+    (\comm{x}{y})_{ij}=\sum_{k=1}^{n}\qty(\xi_{ik}\eta_{kj}-\eta_{ik}\xi_{kj})
+  \end{align*}
+  トレースを取ると
+  \begin{align*}
+    \tr{\comm{x}{y}}=&\sum_{i=1}^{n}\qty(\comm{x}{y})_{ii}\\
+    =&\sum_{i,k=1}^{n}\qty(\xi_{ik}\eta_{ki}-\eta_{ik}\xi_{ki})\\
+    =&0
+  \end{align*}
+  よって$D\g=\sl_n(\R)$である。
+\end{solution}
+
+\begin{solution}\label{sol:2}
+  \href{prob:2}{(問題文)}
+\end{solution}
+
+
+\end{document}

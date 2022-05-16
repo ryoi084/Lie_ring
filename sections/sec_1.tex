@@ -1,0 +1,419 @@
+\documentclass[../main]{subfiles}
+
+\setcounter{section}{0}
+
+\begin{document}
+\twocolumn[
+  \section{リー環の定義}\label{sec:1}
+  \begin{abstract}
+    この本はリー環の定義から出発して半単純リー環の構造、分類の理論まで基本的な理論の筋道を紹介している。リー環は元来リー群を代数的に取り扱うための道具として導入されたものであるから、リー群と並行して考えなければ、その本当の面白さ、有難さはわからない。しかし最初にリー環の代数的理論を学んで、それからリー群論や微分幾何に入ってゆくのもひとつの勉強法であるし、代数的なリー環論だけでも十分興味が湧くだろう。
+  \end{abstract}
+]
+
+\subsection{環と代数}
+
+\begin{definition}[環]\label{Def:1_1}
+  集合$A$に2つの演算"加法"と"乗法"が定義されていて、次の条件\ref{Def:1_1_I},\ref{Def:1_1_II}が成立するとき、$A$は\emph{環}(ring)であるという.
+  \begin{enumerate}[label=(\Roman*)]
+    \item \label{Def:1_1_I}
+      (加法に関する可換律)任意の$x,y,z\in A$に対し
+      \begin{align}
+        & x+y = y+x,\\
+        & (x+y)+z = x+(y+z);
+      \end{align}
+      $0$と呼ばれる特定の元があって、すべての$x\in A$に対し
+      \begin{align}
+        x+0=x;
+      \end{align}
+      任意の$x\in A$に対し,"逆元"$-x$があって
+      \begin{align}
+        x+(-x)=0.
+      \end{align}
+    \item \label{Def:1_1_II}
+      (分配律)任意の$x,y,z\in A$に対し
+      \begin{align}
+        & (x+y)z = xz+yz,\\
+        & z(x+y) = zx+zy.
+      \end{align}
+  \end{enumerate}
+\end{definition}
+
+\begin{remark}
+  条件\ref{Def:1_1_II}は積を定義する写像
+  \begin{align*}
+    \begin{split}
+      A\times A&\longrightarrow A\\
+      (x,y)&\mapsto xy
+    \end{split}
+    \tag{1}
+    \label{eq:1_(1)}
+  \end{align*}
+  が$x$についても$y$についても"加法的"になっていることを示している。
+\end{remark}
+
+
+\begin{named}%[可換環]
+  環$A$が乗法に関して以下の式が成立するとき、"可換な環"または"可換環"という。
+
+  任意の$x,y,z\in A$に対し
+  \begin{align}
+      & xy=yx &\qq{(可換律)}\tag{2}\label{eq:1_(2)}\\
+      & (xy)z=x(yz) &\qq{(結合律)}\tag{3}\label{eq:1_(3)}
+  \end{align}
+\end{named}
+
+\begin{named}\label{nam:R_F}%[実数体]
+  実数環$\R$について$0$以外の元の集合$\R^\times = \qty{\alpha\in\R \mid \alpha\neq 0}$は乗法に関して可換群になっている。
+  このような環$\R$のことを"実数体"という。
+\end{named}
+
+\begin{named}
+  $n$行$n$列の実行列全体の集合を
+    \htar{nam:M_n(R)}{$M_{n}(\R)$}
+  と書く。
+\end{named}
+
+\begin{definition}[代数]\label{Def:1_2}
+  集合$A$に3つの演算、加法、乗法、（実数による）スカラー乗法が定義されていて次の条件\ref{Def:1_2_I}\ref{Def:1_2_II}が成立するとき、$A$を（実数体$\R$上の）\emph{代数}(algebra)という。
+
+  \begin{enumerate}[label=(\Roman*$^\prime$)]
+    \item \label{Def:1_2_I}
+      $A$は$\R$上の\htar{vec_space}{ベクトル空間}である。すなわち、加法に関しては条件\ref{Def:1_1_I}が成立し、さらにスカラー倍に関して($\alpha,\beta\in\R$、$x,y\in A$、$1$は実数の$1$とする)
+      \begin{align*}
+        \alpha(x+y) &= \alpha x+\alpha y, \\
+        (\alpha+\beta)x &= \alpha x + \beta x, \\
+        (\alpha\beta)x &= \alpha(\beta x), \\
+        1x &= x
+      \end{align*}
+      等が成立する。
+    \item \label{Def:1_2_II}
+      任意の$\alpha,\beta\in\R$、$x,y,z\in A$に対し
+      \begin{align*}
+        (x+y)z &= xz+yz,\\
+        z(x+y) &= zx+zy,\\
+        (\alpha x)z &= \alpha(xz),\\
+        z(\alpha x) &= \alpha(zx)
+      \end{align*}
+      等が成立する。
+  \end{enumerate}
+\end{definition}
+
+\begin{remark}
+  \ref{Def:1_2_II}は\eqref{eq:1_(1)}の写像$(x,y)\mapsto xy$が$x$についても$y$についても\htar{bilinear}{"両線形"}(bilinear)であることを示している。
+\end{remark}
+
+\begin{named}
+  \hlin{nam:M_n(R)}{$A=M_{n}(\R)$}は結合律\eqref{eq:1_(3)}も満たす{\代数}である。このような代数を\htar{ass_alg}{"結合代数"}(または多元環)という。
+\end{named}
+
+\begin{named}
+  $V$を$\R$上の（任意の）\htar{vec_space}{ベクトル空間}とし、$V$における積をすべての$x,y\in V$に対し
+  \begin{align*}
+    xy=0 \tag{4}\label{eq:1_(4)}
+  \end{align*}
+  と定義すれば、明らかに\ref{Def:1_2_II}の条件が成立し、(結合)代数となる。
+  $\to$ ベクトル空間$V$から定義される\htar{nam:trivial_alg}{\emph{トリビアルな代数}}とよぶ。
+\end{named}
+
+
+\subsection{リー環の定義}
+
+\begin{definition}[リー環]
+  \label{Def:1_3}
+  集合$\g$に3つの演算(和、スカラー倍、括弧積)が定義されていて、次の条件\ref{Def:1_3_I}\ref{Def:1_3_II}が成立するとき、$\g$を$\R$上の\emph{リー環}(Lie ring)という。
+  \begin{enumerate}[label=(\Roman*$^\prime$)]
+    \item \label{Def:1_3_I}
+      $\g$は$\R$上の（有限次元）\hlin{vec_space}{ベクトル空間}になる。
+    \item \label{Def:1_3_II}
+      括弧積は\hlin{bilinear}{両線形}で、任意の$x,y,z\in \g$に対し次の\eqref{eq:1_(5)}\eqref{eq:1_(6)}を満たす。
+    \begin{align}
+      & \comm{x}{x} = 0, \tag{5}\label{eq:1_(5)}\\
+      & \comm{\comm{x}{y}}{z}+\comm{\comm{y}{z}}{x}+\comm{\comm{z}{x}}{y}=0.\tag{6}\label{eq:1_(6)}
+    \end{align}
+  \end{enumerate}
+\end{definition}
+\begin{named}
+  \eqref{eq:1_(6)}は\emph{ヤコビの等式}(Jacobi Identity)と呼ばれる。また、括弧積$\comm{x}{y}$は\htar{Lie_bra}{\emph{リー積}}とも呼ぶ。
+\end{named}
+\begin{remark}
+  $\g$が標数$2$でなければ、\eqref{eq:1_(5)}は
+  \begin{align}
+    \comm{x}{y}=-\comm{y}{x} \tag{5$^\prime$}\label{eq:1_(5')}
+  \end{align}
+  と同値である。
+\end{remark}
+
+\begin{named}
+  条件\eqref{eq:1_(5)}が成立することを、積$\comm{x}{y}$は"交代的"(alternating)であるという。
+  また、条件\eqref{eq:1_(5')}が成立することを"反対称的"(skew-symmetric)であるという。
+\end{named}
+
+\begin{remark}
+  \eqref{eq:1_(5)}と\eqref{eq:1_(6)}は次のような関係にある。
+
+  $f(x,y,z)=\comm{\comm{x}{y}}{z}$と置き、この式の$x,y,z$にすべての置換を施して得られる式の和を作ってみると
+  \begin{align*}
+    &f(x,y,z)+f(y,z,x)+f(z,x,y)\\
+    +&f(y,x,z)+f(z,y,x)+f(x,z,y)\tag{$\ast$}
+  \end{align*}
+  となる。一方\eqref{eq:1_(5')}より
+  \begin{align*}
+    f(x,y,z)&=\comm{\comm{x}{y}}{z}=\comm{-\comm{y}{x}}{z}\\
+    &=-f(y,x,z)
+  \end{align*}
+  であるから、($\ast$)は$0$に等しくなる。\\
+  また\eqref{eq:1_(6)}の左辺を$F(x,y,z)$と置くと、($\ast$)は
+  \begin{align*}
+    F(x,y,z)+F(y,x,z) = 0
+  \end{align*}
+  と書き直すことができるが、条件\eqref{eq:1_(6)}はこれより強い制約
+  \begin{align*}
+    F(x,y,z)=0
+  \end{align*}であることがわかる。\\
+  $\longrightarrow$一般に\eqref{eq:1_(5)}から\eqref{eq:1_(6)}は導かれない。(反例としてEx.\ref{ex:3}参照)
+\end{remark}
+
+
+\subsection{リー環の例}
+\subsubsection*{Example 1.}
+\hlin{nam:M_n(R)}{$M_n(\R)$}は行列の演算に関して\hlin{ass_alg}{結合代数}になるが、$n\ge2$ならば可換ではない。そこで以下のような"交代積"を定義する。
+
+\begin{definition}[交代積]\label{Def:comm}
+  \htar{Def:comm}{"交代積"}を次のように定義する。
+  \begin{align}
+    \comm{x}{y}=xy-yx \qq{} (x,y\in M_n(\R)) \tag{7}\label{eq:1_(7)}
+  \end{align}
+\end{definition}
+
+\begin{remark}
+  \eqref{eq:1_(6)}について
+  \begin{align*}
+    \comm{\comm{x}{y}}{z}&=(xy-yx)z-z(xy-yx)\\
+    &=(xyz+zyx)-(yxz+zxy)\\
+    \comm{\comm{y}{z}}{x}&=(yzx+xzy)-(zyx+xyz)\\
+    \comm{\comm{z}{x}}{y}&=(zxy+yxz)-(xzy+yzx)
+  \end{align*}
+  より差し引いて$0$となる。
+\end{remark}
+
+\begin{named}
+  \hlin{nam:M_n(R)}{$M_n(\R)$}を$\R$上の{\Lie環}とみたとき、それを\htar{nam:gl}{$\gl_n(\R)$}または$\gl(n,\R)$とかく。($\gl$はgeneral linearの略)
+\end{named}
+
+\begin{remark}
+  \hlin{nam:gl}{$\gl_n(\R)$}は\hlin{vec_space}{ベクトル空間}としては$n^2$次元で、その標準的な基底として
+  \begin{align}
+    & \hspace{11mm} j\notag\\
+    e_{ij}=&\mqty(&\vdots&\\\cdots&1&\cdots\\&\vdots&)i \qq{($1\le i,j \le n$)}\label{rem:base_e}\\
+    &\mqty(
+    \qq{$(i,j)$成分は$1$で他の成分は}\\
+    \qq{すべて$0$であるような行列})\notag
+  \end{align}
+  を取ることができる。この底を使って{\交代積}を計算すると
+  \begin{align*}
+    \begin{split}
+    &\comm{e_{ij}}{e_{kl}}=e_{ij}e_{kl}-e_{kl}e_{ij}\\
+    &\quad =
+    \begin{cases}
+      e_{il} & \qq*{($j=k,i\ne l$)}\\
+      -e_{kj} & \qq*{($i=l,j\ne k$)}\\
+      e_{ii}-e_{jj} & \qq*{($j=k,i=l,i\ne j$)}\\
+      0 & \qq*{(その他の場合)}
+    \end{cases}
+    \end{split}\tag{8}\label{eq:1_(8)}
+  \end{align*}
+  となる。
+\end{remark}
+
+\begin{named}
+  一般に、$A$を$\R$上の結合環(\hlin{ass_alg}{結合代数})とすれば、\eqref{eq:1_(7)}によって\hlin{Lie_bra}{リー積}を定義することにより、$A$に$\R$上の{\Lie環}の構造を入れることができる。これを仮に$(A)_\mathrm{Lie}$とかくこととする。例えば、
+  \begin{align*}
+    (M_n(\R))_\mathrm{Lie}=\gl_n(\R)
+  \end{align*}
+\end{named}
+
+\subsubsection*{Example 2.}\label{ex:2}
+\begin{remark}
+  $V$を任意の(有限次元)\hlin{vec_space}{ベクトル空間}とし、それから定義される\hlin{nam:trivial_alg}{"トリビアルな代数"}もまた$V$で表すことにすれば、$\g=(V)_\mathrm{Lie}$もトリビアルな代数で、すべての$x,y\in\g$に対し
+  \begin{align*}
+    \comm{x}{y}=0
+  \end{align*}が成立する。
+\end{remark}
+\begin{named}
+  以下の\cref{thm:comm_lie_ring}に従うトリビアルな{\Lie環}を\htar{comm_lie_ring}{\emph{可換なリー環}}という。
+\end{named}
+\begin{theorem}[可換なリー環]\label{thm:comm_lie_ring}
+  一般に、$A$を(\cref{Def:1_1}の意味の)結合環とすれば、$(A)_\mathrm{Lie}$がトリビアルな{\Lie環}になるためには、$A$が可換なことが必要十分である。
+\end{theorem}
+
+
+\subsubsection*{Example 3.}\label{ex:3}
+\begin{theorem}
+  一般に、有限次元\hlin{vec_space}{ベクトル空間}$V$に{\Lie環}の構造を定義するためには、$V$の一つの基底$e_{1},\cdots,e_{n}$~($n=\dim{V}$)をとり、$\comm{e_{i}}{e_{j}}$($1\le i,j\le n$)を定めれば十分である。
+\end{theorem}
+\begin{Proof}
+  \href{Def:1_3}{$\g=V$}とすると、任意の$x,y\in\g$は
+  \begin{align*}
+    x=\sum_{i=1}^{n}\xi_{i}e_{i}\qc y=\sum_{i=1}^{n}\eta_{i}e_{i}
+  \end{align*}
+  と書けるから、\hlin{Lie_bra}{リー積}が\hlin{bilinear}{両線形}なことから
+  \begin{align*}
+    \comm{x}{y}=\sum_{i,j=1}^{n}\xi_{i}\eta_{j}\comm{e_{i}}{e_{j}}
+  \end{align*}
+  となり、$\comm{e_{i}}{e_{j}}$が定まれば、$\comm{x}{y}$も定まる。
+\end{Proof}
+\begin{remark}
+  実際に$\comm{e_{i}}{e_{j}}$について{\Lie環}の条件\eqref{eq:1_(5)},\eqref{eq:1_(6)}を確認してみる。
+  \begin{itemize}
+    \item \cref{eq:1_(5),eq:1_(5')}については
+      \begin{align*}
+        \comm{y}{x}=-\sum_{i,j=1}^{n}\xi_{i}\eta_{j}\comm{e_{j}}{e_{i}}
+      \end{align*}
+      が常に成立する、つまり
+      \begin{align*}
+        \comm{e_{i}}{e_{i}}=0\qc \comm{e_{i}}{e_{j}}=-\comm{e_{j}}{e_{i}} \qq{$(i<j)$} \tag{5$^{\dprime}$}\label{eq:1_(5'')}
+      \end{align*}
+      が成立する必要がある。よって、$\comm{e_{i}}{e_{j}}$だけを定めればよい。
+    \item \cref{eq:1_(6)}が成立するためにはすべての$i,j,k$に対し
+      \begin{align*}
+        \comm{\comm{e_{i}}{e_{j}}}{e_{k}}
+        +\comm{\comm{e_{j}}{e_{k}}}{e_{i}}
+        +\comm{\comm{e_{k}}{e_{i}}}{e_{j}}
+        =0 \tag{6$^\prime$}\label{eq:1_(6')}
+      \end{align*}
+      でなければならない。ここでもし$i,j,k$の中に等しいものがあれば、\eqref{eq:1_(6')}は\eqref{eq:1_(5'')}を用いて(例えば$i=j$とすると)
+      \begin{align*}
+        &\comm{\comm{e_{i}}{e_{i}}}{e_{k}}
+        +\comm{\comm{e_{i}}{e_{k}}}{e_{i}}
+        +\comm{\comm{e_{k}}{e_{i}}}{e_{i}}\\
+        =&\comm{\comm{e_{i}}{e_{k}}}{e_{i}}
+        +\comm{-\comm{e_{i}}{e_{k}}}{e_{i}}\\
+        =&0
+      \end{align*}
+      となり成立する。よって、\eqref{eq:1_(6')}は$i<j<k$である場合に成立すれば十分であり、$n\le2$ならば条件\eqref{eq:1_(6')}は不要である。
+  \end{itemize}
+\end{remark}
+\begin{remark}
+  $n$が小さい範囲で具体例をみてみると
+  \begin{itemize}
+    \item $n=1$のとき、
+      $\g=\qty{e_{1}}_{\R}$($e_{1}$によって張られる1次元\hlin{vec_space}{ベクトル空間})を{\Lie環}にする仕方は唯1通りで、$\comm{e_{1}}{e_{1}}=0$によって定義される{\可換なLie環}である。
+    \item $n=2$のとき、
+      $\comm{e_{1}}{e_{2}}$の値を任意に与えるだけで$\g=\qty{e_{1},e_{2}}_{\R}$に{\Lie環}の構造を定義することができる。
+    \item $n=3$のとき、
+      \eqref{eq:1_(6')}は唯1つの条件式
+      \begin{align*}
+        \comm{\comm{e_{1}}{e_{2}}}{e_{3}}
+        +\comm{\comm{e_{2}}{e_{3}}}{e_{1}}
+        +\comm{\comm{e_{3}}{e_{1}}}{e_{2}}=0
+        \tag{6$^{\dprime}$}\label{eq:1_(6'')}
+      \end{align*}
+      となる。したがって、$\comm{e_{1}}{e_{2}}$、$\comm{e_{1}}{e_{3}}$、$\comm{e_{2}}{e_{3}}$をこの式が成立するように与えれば、3次元の{\Lie環}$\g=\qty{e_{1},e_{2},e_{3}}_{\R}$ができる。
+      \begin{itemize}
+        \item[\cmark] 例えば
+          \begin{align*}
+            \comm{e_{1}}{e_{2}}=e_{3}\qc
+            \comm{e_{1}}{e_{3}}=-e_{2}\qc
+            \comm{e_{2}}{e_{3}}=e_{2}
+          \end{align*}
+          とすれば\eqref{eq:1_(6'')}は
+          \begin{align*}
+            &\comm{\comm{e_{1}}{e_{2}}}{e_{3}}
+            +\comm{\comm{e_{2}}{e_{3}}}{e_{1}}
+            +\comm{\comm{e_{3}}{e_{1}}}{e_{2}}\\
+            =&\comm{e_{3}}{e_{3}}
+            +\comm{e_{2}}{e_{1}}
+            +\comm{e_{2}}{e_{2}}\\=&0
+          \end{align*}
+          として成立するため、$\g$は{\Lie環}になる。
+        \item[\xmark] 例えば
+          \begin{align*}
+            \comm{e_{1}}{e_{2}}=e_{1}\qc
+            \comm{e_{1}}{e_{3}}=e_{3}\qc
+            \comm{e_{2}}{e_{3}}=0
+          \end{align*}
+          として置いてみると、\eqref{eq:1_(6'')}の左辺は
+          \begin{align*}
+            &\comm{\comm{e_{1}}{e_{2}}}{e_{3}}
+            +\comm{\comm{e_{2}}{e_{3}}}{e_{1}}
+            +\comm{\comm{e_{3}}{e_{1}}}{e_{2}}\\
+            =&\comm{e_{1}}{e_{3}}
+            +\comm{0}{e_{1}}
+            +\comm{-e_{3}}{e_{2}}\\
+            =&\comm{e_{1}}{e_{3}}
+            -\comm{e_{3}}{e_{2}}
+            =e_{3}\neq0
+          \end{align*}
+          となるため\eqref{eq:1_(6'')}(すなわち\eqref{eq:1_(6)})は成立しない。したがってこの定義される積に関しては$\g$は\underline{リー環にはならない}。
+      \end{itemize}
+  \end{itemize}
+\end{remark}
+
+\subsubsection*{Example 4.}
+\begin{definition}[微分]\label{Def:diff}
+  $A$を$\R$上の任意の環({\代数})とする。$A$から自分自身への一次写像$D$が$A$の積に関して
+  \begin{align*}
+    D(xy)=D(x)\cdot y+x\cdot D(y)\qq{}(x,y\in A)
+    \tag{9}\label{eq:1_(9)}
+  \end{align*}
+  をみたすとき、$D$を$A$の\emph{微分}であるという。
+\end{definition}
+
+\begin{remark}
+  \cref{Def:diff}は微分演算$\dv{t}$の性質の抽象化である。
+\end{remark}
+
+\begin{remark}
+  $D$,$D^\prime$が$A$の{\微分}であるとき、その和$D+D^\prime$やスカラー倍$\alpha D$を通常のように
+  \begin{align*}
+    &\qty(D+D^\prime)(x) = D(x)+D^\prime(x),\\
+    &\qty(\alpha D)(x)=\alpha D(x)
+  \end{align*}
+  によって定義すれば、$D+D^\prime$や$\alpha D$がまた$A$の{\微分}になることは
+  \begin{align*}
+    (D+D^\prime)(xy)=&(D+D^\prime)(x)\cdot y+x\cdot (D+D^\prime)(y)\\
+    =&\qty{D(x)+D^\prime(x)}\cdot y+x\cdot\qty{D(x)+D^\prime(x)}\\
+    =&D(x)\cdot y+D^\prime(x)\cdot y+x\cdot D(x)+x\cdot D^\prime(x)\\
+    =&D(xy)+D^\prime(xy)
+  \end{align*}
+  \begin{align*}
+    \qty(\alpha D)(xy) =& \qty(\alpha D)(x)\cdot y+x\cdot\qty(\alpha D)(x)\\
+    =& \alpha \qty{D(x)\cdot y+x\cdot D(x)}\\
+    =& \alpha D(xy)
+  \end{align*}
+  として\eqref{eq:1_(9)}が成立することから確認できる。
+
+  一方で積(合成写像)$DD^\prime$を計算してみると
+  \begin{align*}
+    \qty(DD^\prime)(xy) =& D\qty(D^\prime(xy))\\
+    =& D\qty(D^\prime(x)\cdot y+x\cdot D^\prime(y))\\
+    =& D\qty(D^\prime(x)\cdot y) + D\qty(x\cdot D^\prime(y))\\
+    =& D\qty(D^\prime(x))\cdot y + D^\prime(x)\cdot D(y)\\
+    & +D(x)\cdot D^\prime(y)+ x\cdot D\qty(D^\prime(y))\\
+    =& \qty(DD^\prime)(x)\cdot y + D^\prime(x)\cdot D(y)\\
+    & +D(x)\cdot D^\prime(y)+ x\cdot \qty(DD)^\prime(y)
+  \end{align*}
+  となり、\underline{{\微分}にはならない}。
+\end{remark}
+
+\begin{remark}
+  {\微分}の"{\交代積}"$\comm{D}{D^\prime}=DD^\prime-D^\prime D$ について確認してみると
+  \begin{align*}
+    \comm{D}{D^\prime}(xy) =& \qty(DD^\prime)(xy)-\qty(D^\prime D)(xy)\\
+    =& \qty(DD^\prime)(x)\cdot y + x\cdot\qty(DD^\prime)(y) \\
+    & -\qty(D^\prime D)(x)\cdot y - x\cdot\qty(D^\prime D)(y)\\
+    =& \qty{\qty(DD^\prime)(x)-\qty(D^\prime D)(x)}\cdot y\\
+    & + x\cdot\qty{\qty(DD^\prime)(y) - \qty(D^\prime D)(y)}\\
+    =& \qty(\comm{D}{D^\prime}(x))\cdot y + x\cdot\qty(\comm{D}{D^\prime}(y))
+  \end{align*}
+  となるため、$\comm{D}{D^\prime}$は一つの微分になる。
+\end{remark}
+
+\begin{definition}[微分環]\label{Def:der_alg}
+  $A$の{\微分}全体の集合を$\Der(A)$とかけば、$\Der(A)$は{\交代積}に関して閉じており、{\Lie環}となる。この$\Der(A)$を$A$の\emph{微分環}(derivation algebra)という。
+\end{definition}
+
+\begin{remark}
+  $A$が有限次元なら、\href{Def:der_alg}{$\Der(A)$}も有限次元である。
+\end{remark}
+\end{document}
