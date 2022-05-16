@@ -111,7 +111,7 @@ postfoothook=\end{mdframed}
 \crefname{lemma}{Lem.}{Lems.}
 
 \renewenvironment{abstract}
- {\footnotesize
+{\footnotesize
   \begin{center}
   \bfseries \vspace{-.5cm}\vspace{0pt}
   \end{center}
@@ -121,6 +121,15 @@ postfoothook=\end{mdframed}
     \setlength{\partopsep}{.5cm}%
   }%
   \item\relax}
- {\endlist}
+{\endlist}
 
-% \input{link_list.sty}
+\makeatletter
+\newcommand\longempty{}%
+\newcommand\DoIfAndOnlyIfStandAlone{%
+  \ifx\document\longempty
+    \expandafter\@gobble
+  \else
+    \expandafter\@firstofone
+  \fi
+}%
+\makeatother
