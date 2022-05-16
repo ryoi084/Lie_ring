@@ -772,7 +772,7 @@ $\g$、$\g^\prime$を($\R$上の){\Lie環}とする。
 \end{Proof}
 
 \subsection{商環と標準的準同型}
-\begin{definition}[同値関係]\label{Def:equiv_rel}
+\begin{theorem}[同値関係]\label{thm:equiv_rel}
   $\g$を{\Lie環}、$\a$をその{\イデアル}とする。$x,y\in\g$に対し、合同関係を
   \begin{align*}
     x\equiv y \pmod{\a} \Leftrightarrow x-y\in\a
@@ -784,7 +784,7 @@ $\g$、$\g^\prime$を($\R$上の){\Lie環}とする。
     \item \label{Def:equiv_rel_2)}$x\equiv y \pmod{\a}$ $\Leftrightarrow$ $y\equiv x \pmod{\a}$.
     \item \label{Def:equiv_rel_3)}$x\equiv y$, $y\equiv z\pmod{\a}$ $\Leftrightarrow$ $x\equiv z \pmod{\a}$.
   \end{enumerate}
-\end{definition}
+\end{theorem}
 
 \begin{Proof}
   \ref{Def:equiv_rel_1)}$x-x=0\in\a$だから。\ref{Def:equiv_rel_2)}仮定により$x-y\in\a$だから。\ref{Def:equiv_rel_3)}仮定により$x-y\in\a,y-z\in\a$。よって$x-z=(x-y)+(y-z)\in\a$となるから。
@@ -804,9 +804,9 @@ $\g$、$\g^\prime$を($\R$上の){\Lie環}とする。
 \end{definition}
 
 
-\begin{remark}
+\begin{theorem}
   同値類の集合$\g/\a$には自然にまた和、スカラー倍、\hlin{Lie_bra}{リー積}が定義できる。
-\end{remark}
+\end{theorem}
 
 \begin{Proof}
   \begin{itemize}
