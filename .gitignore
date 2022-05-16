@@ -1,4 +1,5 @@
 /udline.sty
+/sections/build/
 *.aux
 *.log
 *.fdb_latexmk
