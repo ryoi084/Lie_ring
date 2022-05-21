@@ -24,13 +24,56 @@
   (ただし$D^{0}\g=\g$とおく)と定義すれば
   \begin{align*}
     \g(=D^{0}\g)\supset D\g \supset D^{2}\g \supset \cdots
+    \tag{2}\label{eq:3_(2)}
   \end{align*}
   という{\部分Lie環}の\emph{列}(sequence)が得られる。
 \end{definition}
 
 \begin{remark}
-  $D^{k}\g$の$D^{k-1}\g$に対する関係は$D\g$の$\g$に対する関係と全く同じだから、$D^{k}\g$は$D^{k-1}\g$の{\イデアル}で、商$D^{k-1}\g/D^{k}\g$は{\可換なLie環}である。
+  $D^{k}\g$の$D^{k-1}\g$に対する関係は$D\g$の$\g$に対する関係と全く同じだから、$D^{k}\g$は$D^{k-1}\g$の{\イデアル}で(\hlin{rem:der_ideal_comm}{Rem.参照})、商$D^{k-1}\g/D^{k}\g$は{\可換なLie環}である。
 \end{remark}
+
+\begin{named}\label{nam:seq_length}
+  \eqref{eq:3_(2)}の各項の次元を考えれば
+  \begin{align*}
+    \dim\g \ge \dim D\g \ge \dim D^2\g \ge \cdots
+  \end{align*}
+  という不等式が得られる。よって$\dim\g=n$とすれば、$n$をこえない自然数が$r$があって
+  \begin{align*}
+    n=&\dim\g>\dim D\g > \cdots > \dim D^{r}\g\\
+    =& \dim D^{r+1}\g
+  \end{align*}
+  となる。この最後の式から、$D^{r}\g=D^{r+1}\g$。したがって
+  \begin{align*}
+    D^{r+1}\g = D\qty(D^{r}\g)=D\qty(D^{r+1}\g),\cdots
+  \end{align*}
+  となるから
+  \begin{align*}
+    D^{r}\g=D^{r+1}\g = D^{r+2}\g=\cdots
+  \end{align*}
+  となり、{\列}は$r$番目から先は一定になってしまう。この$r$を列\eqref{eq:3_(2)}の\emph{"長さ"}という。
+\end{named}
+
+\begin{definition}\label{Def:sol_Lie_alg}
+  もし、ある$k$に対して$D^{k}\g=\qty{0}$となるならば、上記により$D^{r}\g=\qty{0}$であり
+  \begin{align*}
+    \g\supseteq D\g\supseteq \cdots \supseteq D^{r-1}\g \supseteq D^{r}\g = \qty{0}
+    \tag{3}\label{eq:3_(3)}
+  \end{align*}
+  という{\列}が得られる。この場合、$\g$は$r$個の{\可換なLie環}
+  \begin{align*}
+    \g/D\g,D\g/D^{2}\g,\cdots,D^{r-1}/D^{r}\g \; D^{r-1}\g
+  \end{align*}
+  を積み重ねた構造を持っている。このような{\Lie環}を\emph{可解リー環}といい、$D^{k}\g=\qty{0}$となる最小の自然数(上記の$r$)をその"長さ"という。
+\end{definition}
+
+\subsubsection*{Example 1.}
+\begin{remark}
+  {\可換なLie環}($\neq\qty{0}$)は長さ$1$の{\可解Lie環}である。
+  ($\g=\qty{0}$ならば、$\g$は長さ$0$の可解リー環とみなされる。)
+\end{remark}
+
+\subsubsection*{Example 2.}
 
 
 \end{document}
