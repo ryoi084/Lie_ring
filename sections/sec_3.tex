@@ -70,10 +70,100 @@
 \subsubsection*{Example 1.}
 \begin{remark}
   {\可換なLie環}($\neq\qty{0}$)は長さ$1$の{\可解Lie環}である。
-  ($\g=\qty{0}$ならば、$\g$は長さ$0$の可解リー環とみなされる。)
+  また$\g=\qty{0}$ならば、$\g$は長さ$0$の可解リー環とみなされる。
+  \begin{Proof}
+    $x,y\in\g$とおくと、すべての$D\g\ni\comm{x}{y}$について
+    \begin{align*}
+      \comm{x}{y}=0  \qq{$\because\g$が{\可換なLie環}}
+    \end{align*}
+    であるから、長さは$1$となる。
+  \end{Proof}
 \end{remark}
 
 \subsubsection*{Example 2.}
+\begin{theorem}
+  $n$次正方行列全体のリー環\hlin{nam:gl}{$\gl_{n}(\R)$}の中で、"上半三角行列"全体の作る部分集合を$\g_{0}$とおく:
+  \begin{align*}
+    \g_{0}=
+    \qty{\left.
+      \begin{pNiceMatrix}
+        \xi_{11} & \xi_{12} & \cdots & \xi_{1n}\\
+        & \xi_{22} & \cdots & \xi_{2n}\\
+        \Block{2-2}<\huge>{0}&  & \ddots & \vdots\\
+        &  &  & \xi_{nn}
+      \end{pNiceMatrix}
+      \right| \xi_{ij}\in\R
+    }.
+    \tag{4}\label{eq:3_(4)}
+  \end{align*}
+  さらに
+  \begin{align*}
+    \g_{k}=
+    \qty{\left.
+        \begin{pNiceMatrix}[small,xdots/shorten=5pt]
+            0 & \cdots & 0 & \xi_{1,k+1}  & \cdots  & \xi_{1n}  \\
+            & \Ddots & & \Ddots & \Ddots & \Vdots  \\
+            & & & & & \xi_{n-k,n}  \\
+            \Block{3-3}<\huge>{0} & & & & & 0  \\
+            & & & & & \Vdots  \\
+            & & & & & 0
+            \CodeAfter
+              \OverBrace{1-1}{1-3}{k}
+        \end{pNiceMatrix}
+      \right| \xi_{ij}\in\R
+    }
+    \tag{5}\label{eq:3_(5)}
+  \end{align*}
+  とおく。これらが$\gl_{n}(\R)$の{\線形部分空間}であることは明らかだが、加えて(\href{Def:sol_Lie_alg}{可解な}){\部分Lie環}になる。
+\end{theorem}
+\begin{Proof}
+  $\g_{0}$の二つの元
+  \begin{align*}
+    x=
+      \begin{pNiceMatrix}[small]
+        \xi_{11} & \xi_{12} & \cdots & \xi_{1n}\\
+        & \xi_{22} & \cdots & \xi_{2n}\\
+        \Block{2-2}<\large>{0}&  & \ddots & \vdots\\
+        &  &  & \xi_{nn}
+      \end{pNiceMatrix}\qc
+    y=
+      \begin{pNiceMatrix}[small]
+        \eta_{11} & \eta_{12} & \cdots & \eta_{1n}\\
+        & \eta_{22} & \cdots & \eta_{2n}\\
+        \Block{2-2}<\large>{0}&  & \ddots & \vdots\\
+        &  &  & \eta_{nn}
+      \end{pNiceMatrix}
+  \end{align*}
+  に対して、積$xy$および$yx$を計算してみると、それらはまた上半三角行列で、その対角成分はどちらも
+  \begin{align*}
+    \xi_{11}\eta_{11}\qc
+    \xi_{22}\eta_{22}\qc
+    \cdots\qc
+    \xi_{nn}\eta_{nn}
+  \end{align*}
+  となる。よって{\交代積}$\comm{x}{y}=xy-yx$も上半三角行列でその対角成分はすべて$0$となる。
+  すなわち、$\comm{x}{y}\in\g_{1}$。したがって
+  \begin{align*}
+    \comm{\g_{0}}{\g_{0}}\subset\g_{1}.
+    \tag{6}\label{eq:3_(6)}
+  \end{align*}
+  同様に$x\in\g_{k}, y\in\g_{l}$ならば$xy, yx$ともに$\g_{k+l}$に入り、$\comm{x}{y}\in\g_{k+l}$。したがって
+  \begin{align*}
+    \comm{\g_{k}}{\g_{l}}\subset\g_{k+l}.
+    \tag{7}\label{eq:3_(7)}
+  \end{align*}
+  という関係が得られる。これから$\g_{k}\;{(k=0,1,\cdots)}$が$\g_{0}$の{\イデアル}であることがわかる。
+
+  また
+  \begin{align*}
+    D\g_{0}\subset\g_{1}\qc D\g_{k}\subset\g_{2k}\qq{($k=1,2,\cdots$)}
+  \end{align*}
+  が成立するから、$D^{k}\g_{1}\subset\g_{2k}$。したがって、$2^{k}\ge n$となるような$k$をとれば、
+  \begin{align*}
+    D^{k+1}\g_{0}=D^{k}\g_{1}=\qty{0},
+  \end{align*}
+  となる。
+\end{Proof}
 
 
 \end{document}

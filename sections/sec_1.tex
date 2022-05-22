@@ -203,11 +203,16 @@
 \begin{remark}
   \hlin{nam:gl}{$\gl_n(\R)$}は\hlin{vec_space}{ベクトル空間}としては$n^2$次元で、その標準的な基底として
   \begin{align}
-    & \hspace{11mm} j\notag\\
-    e_{ij}=&\mqty(&\vdots&\\\cdots&1&\cdots\\&\vdots&)i \qq{($1\le i,j \le n$)}\label{rem:base_e}\\
+    e_{ij} =& \begin{pNiceMatrix}[first-row,last-col=4]
+      & j & & \\
+              & \vdots  &        &   \\
+      \cdots  & 1       & \cdots & i \\
+              & \vdots  &        &
+      \end{pNiceMatrix}
+    \qq{($1\le i,j \le n$)}\label{rem:base_e}\\
     &\mqty(
-    \qq{$(i,j)$成分は$1$で他の成分は}\\
-    \qq{すべて$0$であるような行列})\notag
+    \qq*{$(i,j)$成分は$1$で他の成分は}\\
+    \qq*{すべて$0$であるような行列})\notag
   \end{align}
   を取ることができる。この底を使って{\交代積}を計算すると
   \begin{align*}
