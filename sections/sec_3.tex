@@ -1,5 +1,5 @@
 \documentclass[../main]{subfiles}
-\usepackage{../settings/myexternaldocument}
+\input{\subfix{../settings/myexternaldocument.sty}}
 \setcounter{section}{2}
 
 \begin{document}
@@ -101,15 +101,16 @@
   \begin{align*}
     \g_{k}=
     \qty{\left.
-        \begin{pNiceMatrix}[small,xdots/shorten=5pt]
+        \begin{pNiceMatrix}[first-row]%[small,xdots/shorten=5pt]
+             & k & & & & \\
             0 & \cdots & 0 & \xi_{1,k+1}  & \cdots  & \xi_{1n}  \\
             & \Ddots & & \Ddots & \Ddots & \Vdots  \\
             & & & & & \xi_{n-k,n}  \\
             \Block{3-3}<\huge>{0} & & & & & 0  \\
             & & & & & \Vdots  \\
             & & & & & 0
-            \CodeAfter
-              \OverBrace{1-1}{1-3}{k}
+            % \CodeAfter
+            %   \OverBrace{1-1}{1-3}{k}
         \end{pNiceMatrix}
       \right| \xi_{ij}\in\R
     }
