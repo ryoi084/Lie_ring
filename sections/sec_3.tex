@@ -81,6 +81,7 @@
 \end{remark}
 
 \subsubsection*{Example 2.}
+\label{exam:3_2}
 \begin{theorem}
   $n$次正方行列全体のリー環\hlin{nam:gl}{$\gl_{n}(\R)$}の中で、"上半三角行列"全体の作る部分集合を$\g_{0}$とおく:
   \begin{align*}
@@ -158,12 +159,119 @@
   \begin{align*}
     D\g_{0}\subset\g_{1}\qc D\g_{k}\subset\g_{2k}\qq{($k=1,2,\cdots$)}
   \end{align*}
-  が成立するから、$D^{k}\g_{1}\subset\g_{2k}$。したがって、$2^{k}\ge n$となるような$k$をとれば、
+  が成立するから、$D^{k}\g_{1}\subset\g_{2^{k}}$。したがって、$2^{k}\ge n$となるような$k$をとれば、
   \begin{align*}
     D^{k+1}\g_{0}=D^{k}\g_{1}=\qty{0},
   \end{align*}
   となる。
+  したがって、$\g_{0}$は{\可解Lie環}でその長さは高々$n$である。
 \end{Proof}
+
+\begin{problem}
+  \eqref{eq:3_(6)},\eqref{eq:3_(7)}で実際は統合が成立することを証明せよ。(したがって$\g_{0}$の長さ$r$は$2^{r-1}\ge n$となる最小の自然数である。)
+\end{problem}
+
+
+\subsection{可解リー環の性質}
+
+\begin{theorem}
+  $\g$を{\可解Lie環}、$\h$をその{\部分Lie環}とすれば、$\h$も可解である。特に$\h$が{\イデアル}ならば、{\商環}$\g/\h$も可解である。
+\end{theorem}
+
+\begin{Proof}
+  $\g$が{\可解}であるから、ある$r$に対し$D^{r}\g={0}$。$\h$を$\g$の{\部分Lie環}とすれば、$\h\subset\g$から
+  \begin{align*}
+    D\h=\comm{\h}{\h}\subset\comm{\g}{\g}=D\g.
+  \end{align*}
+  これから帰納法によって、$D^{k}\h\subset D^{k}\g$ ($k=1,2,\cdots$)が証明される。
+  よって$D^{k}\h={0}$となり、$\h$は{\可解}である。$\h$が{\イデアル}であるときには、{\標準的準同型写像}
+  \begin{align*}
+    \varphi\colon\g\longrightarrow\bar{\g}=\g/\h
+  \end{align*}
+  を考える。$\varphi(\g)=\bar{\g}$から
+  \begin{align*}
+    \varphi(D\g)=\comm{\varphi(\g)}{\varphi(\g)}=\comm{\bar{\g}}{\bar{\g}}=D\bar{\g}.
+  \end{align*}
+  これから帰納法によって、$\varphi(D^{k}\g)=D^{k}\bar{\g}$ ($k=1,2,\cdots$)が証明される。
+  よって$D^{r}\bar{\g}={0}$となり、$\bar{\g}$も可解である。
+\end{Proof}
+
+
+\begin{theorem}
+  $\a$を{\Lie環}$\g$の{\イデアル}とする。$\a$と$\g/\a$がともに{\可解}ならば、$\g$も可解である。
+\end{theorem}
+
+\begin{Proof}
+  $\a,\g/\a$の長さを$r_{1},r_{2}$とすれば、$D^{r_{1}}\a=\qty{0}$、$D^{r_{2}}\qty(\g/\a)={0}$。
+  上の証明と同様に{\標準的準同型写像}$\varphi\colon\g\longrightarrow\g/\a$を考えれば、$\varphi(D^{k}\g)=D^{k}(\g/\a)$。特に$\varphi(D^{r_{1}})=D^{r_{2}}(\g/\a)=\qty{0}$。これは$D^{r_{2}}\g\subset\a$を意味する。よってまた上の証明と同様に$D^{k(D^{r_{1}})}\subset D^{k}\a$。特に
+  \begin{align*}
+    D^{r_{1}+r_{2}}(\g)=D^{r_{1}}(D^{r_{2}})\subset D^{r_{1}}\a=\qty{0}。
+  \end{align*}
+  よって$\g$は{\可解}でその長さは$r_{1}+r_{2}$を超えない。
+\end{Proof}
+
+
+\subsection{冪零リー環}
+\begin{definition}[冪零リー環]\label{Def:nil_Lie_alg}
+  $\g$を{\実数体}$\R$上の{\Lie環}とする。ここで
+  \begin{align*}
+    C^{0}\g=\g\qc C^{k}\g=\comm{\g}{C^{k-1}\g} \qq{} (k=1,2,\cdots)
+    \tag{8}\label{eq:3_(8)}
+  \end{align*}
+  によって$C^{k}\g$を帰納的に定義する。
+  前回の\cref{lem:2_1}により$C^{k}\g$はすべて$\g$の{\イデアル}で、単調減少{\列}
+  \begin{align*}
+    \g=C^{0}\g\supset C^{1}\g \supset C^{2}\g \supset \cdots
+  \end{align*}
+  が得られる。前と同様、$C^{k}\g=C^{k+1}\g$となる最小の自然数を$s$と定義すれば
+  \begin{align*}
+    \g\supseteq C\g \supseteq \cdots \supseteq C^{s}\g = C^{s+1}\g = \cdots
+    \tag{9}\label{eq:3_(9)}
+  \end{align*}
+  となる。
+
+  ある$k$に対し$C^{k}\g=\qty{0}$(したがって$C^{k}\g=\qty{0}$)となるとき、$\g$を\emph{冪零リー環}といい、上記の$s$をその\emph{"長さ"}という。
+\end{definition}
+
+\begin{theorem}
+  {\冪零Lie環}は可解である。またその逆は一般に成立しない。
+\end{theorem}
+
+\begin{Proof}
+  定義から明らかに
+  \begin{align*}
+    & C\g=\comm{\g}{\g}=D\g\\
+    & C^{2}\g = \comm{\g}{C\g}\supset\comm{D\g}{D\g}=D^2\g, \cdots
+  \end{align*}
+  一般に帰納法により、
+  \begin{align*}
+    C^{k}\g \supset D^{k}\g \qq{} (k=1,2,\cdots)
+  \end{align*}
+\end{Proof}
+
+\subsubsection*{Example.3}
+\begin{remark}
+
+2次元の{\Lie環}$\g=\qty{e_{1},e_{2}}$において
+\begin{align*}
+  \comm{e_{1}}{e_{2}}=\lambda e_{1} + \mu e_{2} = f
+\end{align*}
+とおけば
+\begin{align*}
+  C\g=D\g=\qty{f}_{\R}\qc D^{2}\g=\qty{0}
+\end{align*}
+だから$\g$は{\可解}である。しかし
+\begin{align*}
+  C^{2}\g=\qty{\comm{e_{1}}{f},\comm{e_{2}}{f}}_{\R}=\comm{\mu f}{\lambda f} = \qty{f}_{\R} = C\g
+\end{align*}
+となるから、$f\neq 0$ならば$\g$は冪零ではない。
+\end{remark}
+
+\subsubsection*{Example.4}
+上の\cref{exam:3_2}における$\g_1$は冪零である。実際
+
+
+
 
 
 \end{document}
