@@ -9,6 +9,20 @@
     colorlinks=true,
     linkcolor=dark-blue,
 }
+\zxrsetup{toltxlabel} % 通常のLaTeXスタイルの\refを使う（\zexternaldocumentより前におく）
+\makeatletter
+\newcommand*{\addFileDependency}[1]{ % argument=file name and extension
+  \typeout{(#1)}
+  \@addtofilelist{#1}
+  \IfFileExists{#1}{}{\typeout{No file #1.}}
+}
+\makeatother
+
+\newcommand*{\myexternaldocument}[2]{%
+  \zexternaldocument*{#1/#2}%
+    \addFileDependency{#2.tex}%
+    \addFileDependency{#1/#2.aux}%
+}
 
 \numberwithin{equation}{section}
 \declaretheoremstyle[
@@ -124,16 +138,6 @@ postfoothook=\end{mdframed}
   \item\relax}
 {\endlist}
 
-\makeatletter
-\newcommand\longempty{}%
-\newcommand\DoIfAndOnlyIfStandAlone{%
-  \ifx\document\longempty
-    \expandafter\@gobble
-  \else
-    \expandafter\@firstofone
-  \fi
-}%
-\makeatother
 
 \DeclareFontShape{JY1}{hmc}{m}{it}{<->ssub*hmc/m/n}{}
 \DeclareFontShape{JY1}{hmc}{b}{n}{<->ssub*hmc/bx/n}{}
